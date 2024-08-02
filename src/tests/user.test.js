@@ -83,9 +83,9 @@ test("POST -> 'BASE_URL/login', should return statusCode 200, and res.body.email
 });
 
 test("POST 'BASE_URL'/login, should return statusCode 401", async () => {
-    const useInvalid = {
+    const userInvalid = {
         email:"maicol@gmail.com",
-        password:"Invalid password",
+        password:"Invalid password"
     }
 
     const res = await request(app)
@@ -93,4 +93,13 @@ test("POST 'BASE_URL'/login, should return statusCode 401", async () => {
         .send(userInvalid)
 
     expect(res.statusCode).toBe(401)
-})
+});
+
+test("Delete -> 'BASE_URL/:id, should return statusCode 204", async() => {
+    
+    const res = await request(app)
+        .delete(`${BASE_URL}/${userId}`)
+        .set('Authorization', `Bearer ${TOKEN}`)
+
+    expect(res.statusCode).toBe(204)
+});
