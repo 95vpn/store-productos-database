@@ -33,6 +33,7 @@ test("POST -> BASE_URL, should return statusCode 201, and res.body.title === pro
         description: "iphone 15 256gb",
         price: 890,
         stock: 20,
+        discount: 20,
         categoryId: category.id
     }
 
@@ -73,5 +74,33 @@ test("GET -> BASE_URL/:id, should return statusCode 201, and res.body length ===
     expect(res.body).toBeDefined()
     expect(res.body.nombre_product).toBe(product.nombre_product)
 
+    
+});
+
+test("PUT -> BASE_URL, should return statusCode 200, and res.body.title === bodyUpdate.title", async () => {
+    const bodyUpdate = {
+        nombre_product: "iphone 15  pro max"
+    }
+
+    const res = await request(app)
+        .put(`${BASE_URL}/${productId}`)
+        .send(bodyUpdate)
+        .set("Authorization", `Bearer ${TOKEN}`)
+
+    expect(res.statusCode).toBe(200)
+    expect(res.body).toBeDefined()
+    expect(res.body.nombre_product).toBe(bodyUpdate.nombre_product)
+
     await category.destroy()
 });
+
+test("Delete -> BASE_URL, should return statusCode 204", async () => {
+    const res = await request(app)
+        .delete(`${BASE_URL}/${productId}`)
+        .set('Authorization', `Bearer ${TOKEN}`)
+
+    expect(res.statusCode).toBe(204)
+
+    await category.destroy()
+});
+
