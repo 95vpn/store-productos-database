@@ -14,4 +14,4 @@ const testMigrate = async () => {
     }
 }
 
-testMigrate()
+testMigrate();

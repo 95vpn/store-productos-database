@@ -33,7 +33,6 @@ test("POST -> BASE_URL, should return statusCode 201, and res.body.title === pro
         description: "iphone 15 256gb",
         price: 890,
         stock: 20,
-        discount: 20,
         categoryId: category.id
     }
 
