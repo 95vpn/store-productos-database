@@ -18,10 +18,10 @@ const Product = sequelize.define('product', {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-    // discount: {
-    //     type: DataTypes.STRING,
-    //     allowNull: true
-    // },
+    discount: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
     //categoryId
 });
 

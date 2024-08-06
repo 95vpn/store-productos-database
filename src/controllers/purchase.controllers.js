@@ -43,5 +43,4 @@ const create = catchError(async(req, res) => {
 module.exports = {
     getAll,
     create,
-    
 }
